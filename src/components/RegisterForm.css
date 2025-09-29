@@ -1,0 +1,371 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-left {
+  background: #007bff;
+  color: white;
+  padding: 30px 15px; /* vähän tiiviimpi */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.form-left h1 {
+  margin: 0 0 8px;
+  font-size: 28px; /* pienempi */
+}
+
+.form-left p {
+  font-size: 1em;
+  opacity: 0.9;
+  line-height: 1.2;
+}
+
+.form-right {
+  flex: 2;
+  padding: 20px 40px; /* tiiviimpi */
+}
+
+.form-right h2 {
+  margin-bottom: 10px;  /* pienempi marginaali */
+  font-size: 18px;      /* pienempi fontti */
+}
+
+form label {
+  display: block;
+  margin-bottom: 2px;   /* labelin ja kentän väli minimaalinen */
+  line-height: 1.2;
+  font-size: 1em;      /* hieman suurempi fontti */
+  font-weight: 500;
+  color: #333;
+}
+
+form input,
+form select {
+  margin-bottom: 14px;   /* kenttien välinen väli pienempi */
+  padding: 6px 8px;     /* pienempi padding */
+  font-size: 1em;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 9px;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #0056b3, #003d80);
+}
+
+.form-left {
+  background: #007bff;
+  color: #fff;
+  padding: 40px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* pysty-keskitys */
+  align-items: center;     /* vaaka-keskitys */
+  text-align: center;
+}
+
+.form-icon {
+  width: 64px;  /* säädä makuun */
+  height: auto;
+  margin-bottom: 12px;
+}
+
+
+/* Overlay peittää lomakkeen latauksen/ lähetystä varten */
+.form-container {
+  position: relative;
+}
+
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(2px);
+  text-align: center;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(0,0,0,0.15);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  font-weight: 600;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Estä klikkailu & anna visuaalinen vihje */
+.btn[disabled],
+input[disabled],
+select[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+
+/* Responsiivisuus */
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+  }
+
+  .form-left {
+    padding: 15px;
+  }
+
+  .form-left h1 {
+    font-size: 22px;
+  }
+
+  .form-right {
+    padding: 15px 18px; /* mobiilissa vielä kompaktimpi */
+  }
+
+  .form-right h2 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  form input,
+  form select {
+    padding: 6px;
+    margin-bottom: 10px;
+  }
+}
+/* --- PaidList.jsx taulukko + pill --- */
+.list-table-wrap {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid #e9ecf2;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,.04);
+}
+
+.list-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+}
+
+.list-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f2f6ff;
+  text-align: left;
+  font-weight: 700;
+  font-size: 14px;
+  color: #222;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e9ecf2;
+}
+
+.list-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef1f6;
+  font-size: 14px;
+  color: #222;
+}
+
+.list-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #1246d6;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.empty-row {
+  padding: 16px 12px;
+  color: #666;
+  text-align: center;
+}
+/* ----- PaidList Compact (mukailee list_ilmoittautuneet.php-tyyliä) ----- */
+.pl-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 28px 12px;
+  min-height: 100vh;
+  background: #f7f7fb;
+  box-sizing: border-box;
+}
+
+.pl-card {
+  width: 100%;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 0;       /* pyöristys pois tai voit jättää */
+  box-shadow: none;       /* varjo pois */
+  border: none;           /* reunaviiva pois */
+  overflow: hidden;
+}
+
+.pl-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.pl-title h1 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+}
+.pl-date {
+  margin-top: 4px;
+  color: #666;
+  font-size: 14px;
+}
+.pl-meta {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.pl-actions { display: flex; gap: 8px; }
+.pl-btn { width: auto; padding: 9px 14px; }
+
+.pl-body { padding: 18px; }
+
+.pl-info {
+  background: #f7f9ff;
+  border: 1px solid #e6ecff;
+  color: #2f3a8a;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.pl-error {
+  color: #b00020;
+  background: #fde7ea;
+  border: 1px solid #f3bcc3;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+/* Table */
+.pl-table-wrap {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid #e9ecf2;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,.04);
+}
+.pl-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+}
+.pl-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f2f6ff;
+  text-align: left;
+  font-weight: 700;
+  font-size: 14px;
+  color: #222;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e9ecf2;
+}
+.pl-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef1f6;
+  font-size: 14px;
+  color: #222;
+}
+.pl-table tr:last-child td { border-bottom: none; }
+
+.pl-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #1246d6;
+  font-size: 12px;
+  font-weight: 700;
+}
+.pl-empty { padding: 16px 12px; color: #666; text-align: center; }
+
+/* Mobiili */
+@media (max-width: 768px) {
+  .pl-header { flex-direction: column; align-items: flex-start; }
+  .pl-btn { width: 100%; }
+}
+/* Yhtenäinen nappirivi (keskitys + yhtenäinen ulkoasu) */
+.btn-group{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+/* Yliaja .btn:n oletus width:100% -> automaattinen leveys ryhmässä */
+.btn-group .btn{
+  width:auto;
+  padding:10px 18px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}

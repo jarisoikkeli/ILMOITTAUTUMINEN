@@ -1,0 +1,18 @@
+.ef-container{display:flex;justify-content:center;align-items:flex-start;background:#f7f8fb;min-height:100vh;padding:32px 16px;box-sizing:border-box}
+.ef-card{display:grid;grid-template-columns:1fr 2fr;width:100%;max-width:980px;background:#fff;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,.08);overflow:hidden}
+.ef-left{background:linear-gradient(180deg,#0d6efd,#0a58ca);color:#fff;padding:32px}
+.ef-title{margin:0 0 8px;font-size:28px;font-weight:700}
+.ef-right{padding:28px 28px 36px}
+.ef-right form label{display:block;margin-top:10px;margin-bottom:2px;font-weight:600;font-size:14px;color:#222}
+.ef-right form input{width:100%;padding:10px 12px;border:1px solid #dcdfe5;border-radius:6px;font-size:14px;outline:none}
+.ef-right form input:focus{border-color:#0d6efd;box-shadow:0 0 0 3px rgba(13,110,253,.12)}
+.ef-btn{margin-top:16px;width:100%;padding:12px 14px;border:0;border-radius:8px;background:linear-gradient(90deg,#0d6efd,#0a58ca);color:#fff;font-weight:700;cursor:pointer}
+.ef-success{padding:10px 4px}
+.ef-error{color:#b00020;background:#fde7ea;border:1px solid #f3bcc3;padding:10px 12px;border-radius:8px}
+.ef-competition-name {
+  font-size: 1.6em;
+  margin: 1em 0;
+  color: #fff;
+}
+
+@media (max-width:860px){.ef-card{grid-template-columns:1fr}.ef-left{text-align:center}}
